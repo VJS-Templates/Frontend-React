@@ -3,12 +3,15 @@ import { Box, Button } from '@mui/material';
 import { axiosAuthInstance } from '../services/axiosConfig';
 import { AuthContext } from '../contexts/AuthContext';
 
+const USERTYPES = { 1: 'ADMIN', 2: 'TYPE1', 3: 'TYPE2', 4: 'TYPE3', 5: 'TYPE4', 6: 'GUEST' };
+
 function PrivateComponent() {
-  const { logout } = useContext(AuthContext);
+  const { logout, userType } = useContext(AuthContext);
 
   return (
     <Box>
       <h1>PrivateComponent</h1>
+      <h2>You are a {USERTYPES[userType]} user</h2>
       <div
         style={{
           display: 'flex',

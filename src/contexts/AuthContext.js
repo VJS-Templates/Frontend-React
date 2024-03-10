@@ -5,10 +5,12 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [isLoggedIn, setLoggedIn] = useState(authService.isAuthenticated);
+  const [userType, setUserType] = useState(null);
 
   const login = async (email, password) => {
     await authService.login(email, password);
     setLoggedIn(authService.isAuthenticated);
+    setUserType(authService.userType);
   };
 
   const logout = () => {
@@ -17,8 +19,8 @@ export function AuthProvider({ children }) {
   };
 
   const authContextValue = useMemo(
-    () => ({ isLoggedIn, login, logout }),
-    [isLoggedIn, login, logout]
+    () => ({ isLoggedIn, userType, login, logout }),
+    [isLoggedIn, userType, login, logout]
   );
 
   return <AuthContext.Provider value={authContextValue}>{children}</AuthContext.Provider>;

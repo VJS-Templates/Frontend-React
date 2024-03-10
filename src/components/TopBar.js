@@ -129,7 +129,7 @@ export default function TopBar({ children }) {
             color="inherit"
             noWrap
             sx={{ flexGrow: 1, textAlign: 'center', paddingRight: '100px' }}>
-            CTOP
+            Hmmm
           </Typography>
           {isLoggedIn ? (
             <IconButton color="inherit">
